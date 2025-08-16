@@ -1,0 +1,17 @@
+robotpy==2025.3.2.2
+certifi
+robotpy-commands-v2==2025.3.2
+wpilib==2025.3.2.2
+
+# Other pip packages to install
+pyntcore
+photonlibpy
+libgrapplefrc-py
+robotpy-ctre
+robotpy-navx
+robotpy-apriltag
+robotpy-commands-v2
+robotpy-playingwithfusion
+phoenix6
+robotpy-pathplannerlib
+robotpy-rev

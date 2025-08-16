@@ -1,0 +1,157 @@
+Aiming at an AprilTag using RobotPy, PhotonVision, and the Command-Based Framework
+This example demonstrates how to use PhotonVision with RobotPy, including the RobotContainer, Subsystems, and Commands, to automatically aim your robot towards a specific AprilTag.
+Conceptual Overview
+Vision Subsystem: A dedicated subsystem will handle communication with the PhotonVision camera and process the data. This will include retrieving detection results, filtering for the desired AprilTag, and extracting relevant information like yaw.
+Drive Subsystem: Your robot's drivetrain subsystem will expose methods to control the robot's movement (e.g., drive_arcade_drive).
+Aim Command: A command will be created that requires the Vision and Drive subsystems. This command will execute periodically, retrieve the target yaw from the Vision Subsystem, calculate the necessary drivetrain adjustments using a PID controller, and instruct the Drive Subsystem to move the robot accordingly.
+RobotContainer: The RobotContainer will be responsible for instantiating the subsystems and commands, and binding the command to a triggering event (e.g., a button press on a joystick). 
+1. Setup
+Ensure robotpy[photonvision] is installed on both your computer and the RoboRIO.
+Configure your PhotonVision camera and pipeline to detect AprilTags, including tuning parameters like exposure, gain, and detection thresholds.
+Note the unique ID of the AprilTag you want to aim at (e.g., APRILTAG_ID = 7). 
+2. Code example
+2.1. Vision Subsystem (e.g., VisionSubsystem.py)
+This subsystem wraps the PhotonCamera and provides methods to access detection data. 
+python
+import photonvision
+import wpilib
+from wpimath.geometry import Transform3d, Pose3d
+from wpilib import SmartDashboard
+from commands2 import Subsystem
+
+class VisionSubsystem(Subsystem):
+    def __init__(self):
+        super().__init__()
+        # Replace 'your_camera_name' with the actual name of your PhotonVision camera
+        self.camera = photonvision.PhotonCamera("your_camera_name") 
+
+        # Transform from the robot's origin to the camera's position
+        # Replace these values with your robot's specific camera mounting
+        self.robot_to_camera_transform = Transform3d(
+            0.5, 0.0, 0.5,  # X, Y, Z translation in meters
+            0.0, 0.0, 0.0  # Rotation in radians (roll, pitch, yaw)
+        )
+
+        # Create a PhotonPoseEstimator to estimate robot pose from AprilTags
+        # Replace AprilTagFieldLayout with your specific field layout
+        # (e.g., load from a JSON file)
+        self.field_layout = None  # You would load this from a JSON or define it manually
+        self.photon_pose_estimator = photonvision.PhotonPoseEstimator(
+            self.field_layout,
+            photonvision.PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR, # Recommended strategy
+            self.camera,
+            self.robot_to_camera_transform
+        )
+
+    def get_latest_result(self):
+        return self.camera.getLatestResult()
+
+    def get_estimated_robot_pose(self):
+        return self.photon_pose_estimator.update()
+
+    def get_target_yaw(self, april_tag_id: int):
+        result = self.get_latest_result()
+        if result.hasTargets():
+            for target in result.getTargets():
+                if target.getFiducialId() == april_tag_id:
+                    # Yaw is reported CW-positive, convert to CCW-positive if needed
+                    # depending on your drivetrain's convention
+                    return target.getYaw()
+        return None
+
+    def periodic(self):
+        # Update any vision-related information on SmartDashboard
+        latest_result = self.get_latest_result()
+        SmartDashboard.putBoolean("Has AprilTag Target", latest_result.hasTargets())
+        
+        # Optionally, display the estimated robot pose
+        estimated_pose = self.get_estimated_robot_pose()
+        if estimated_pose:
+            SmartDashboard.putNumberArray("Estimated Pose", [
+                estimated_pose.x, estimated_pose.y, estimated_pose.rotation().degrees()
+            ])
+2.2. Drive Subsystem (e.g., DriveSubsystem.py)
+This is a simplified example; your actual drivetrain implementation may be different.
+python
+import wpilib
+from wpilib.drive import DifferentialDrive
+from commands2 import Subsystem
+
+class DriveSubsystem(Subsystem):
+    def __init__(self):
+        super().__init__()
+        self.left_motor = wpilib.PWMSparkMax(0) # Adjust motor controller ports
+        self.right_motor = wpilib.PWMSparkMax(1)
+        self.drive = DifferentialDrive(self.left_motor, self.right_motor)
+
+    def drive_arcade_drive(self, forward_speed: float, turn_speed: float):
+        self.drive.arcadeDrive(forward_speed, turn_speed)
+
+    def stop(self):
+        self.drive.stopMotor()
+2.3. Aim Command (e.g., AimAtAprilTag.py)
+This command uses a PID controller to adjust the robot's turn rate based on the AprilTag's yaw.
+python
+import commands2
+import wpimath.controller
+
+class AimAtAprilTag(commands2.Command):
+    def __init__(self, drive_subsystem: DriveSubsystem, vision_subsystem: VisionSubsystem, april_tag_id: int, target_yaw_setpoint: float = 0.0, turn_kP: float = 0.05):
+        super().__init__()
+        self.drive = drive_subsystem
+        self.vision = vision_subsystem
+        self.april_tag_id = april_tag_id
+        self.target_yaw_setpoint = target_yaw_setpoint
+        self.turn_kP = turn_kP  # Proportional gain for turning
+
+        self.addRequirements(self.drive, self.vision)
+
+        self.turn_controller = wpimath.controller.PIDController(turn_kP, 0, 0)
+        self.turn_controller.setSetpoint(self.target_yaw_setpoint)
+        self.turn_controller.setTolerance(2.0)  # Tolerance in degrees
+
+    def initialize(self):
+        self.turn_controller.reset()
+
+    def execute(self):
+        target_yaw = self.vision.get_target_yaw(self.april_tag_id)
+
+        if target_yaw is not None:
+            turn_output = self.turn_controller.calculate(target_yaw)
+            self.drive.drive_arcade_drive(0.0, turn_output)  # Only turn, no forward movement
+        else:
+            self.drive.stop() # Stop if no target found
+
+    def isFinished(self) -> bool:
+        return self.turn_controller.atSetpoint() or self.vision.get_target_yaw(self.april_tag_id) is None
+
+    def end(self, interrupted: bool):
+        self.drive.stop()
+2.4. RobotContainer (e.g., RobotContainer.py)
+This class instantiates the subsystems and binds the command to a joystick button. 
+python
+import wpilib.joystick
+import commands2.button
+
+class RobotContainer:
+    def __init__(self):
+        self.drive_subsystem = DriveSubsystem()
+        self.vision_subsystem = VisionSubsystem()
+
+        self.driver_controller = wpilib.joystick.Joystick(0) # Adjust joystick port
+
+        self.configure_button_bindings()
+
+    def configure_button_bindings(self):
+        commands2.button.JoystickButton(self.driver_controller, 1).whileTrue(
+            AimAtAprilTag(self.drive_subsystem, self.vision_subsystem, APRILTAG_ID_TO_TRACK) # Replace with your chosen AprilTag ID
+        )
+
+    def get_autonomous_command(self):
+        # Return the autonomous command here
+        return None
+3. Deployment and testing
+Deploy your code to the RoboRIO.
+Connect to the PhotonVision interface and ensure the camera is configured and detecting the AprilTag correctly.
+Test your AimAtAprilTag command by pressing the assigned button on your joystick. The robot should turn to face the AprilTag.
+Adjust the turn_kP in the AimAtAprilTag command to fine-tune the aiming response. 

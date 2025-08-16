@@ -1,0 +1,61 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red193\green193\blue193;\red24\green24\blue24;\red89\green138\blue67;
+\red70\green137\blue204;\red202\green202\blue202;\red67\green192\blue160;\red194\green126\blue101;\red140\green211\blue254;
+\red212\green214\blue154;}
+{\*\expandedcolortbl;;\cssrgb\c80000\c80000\c80000;\cssrgb\c12157\c12157\c12157;\cssrgb\c41569\c60000\c33333;
+\cssrgb\c33725\c61176\c83922;\cssrgb\c83137\c83137\c83137;\cssrgb\c30588\c78824\c69020;\cssrgb\c80784\c56863\c47059;\cssrgb\c61176\c86275\c99608;
+\cssrgb\c86275\c86275\c66667;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2     \cf4 \strokec4 # Change this to match the name of your camera as shown in the web ui\cf2 \cb1 \strokec2 \
+\cb3     \cf5 \strokec5 self\cf2 \strokec2 .camera \cf6 \strokec6 =\cf2 \strokec2  \cf7 \strokec7 PhotonCamera\cf2 \strokec2 (\cf8 \strokec8 "your_camera_name_here"\cf2 \strokec2 )\cb1 \
+\
+\cb3     \cf4 \strokec4 # Query the latest result from PhotonVision\cf2 \cb1 \strokec2 \
+\cb3     \cf9 \strokec9 result\cf2 \strokec2  \cf6 \strokec6 =\cf2 \strokec2  \cf5 \strokec5 self\cf2 \strokec2 .camera.\cf10 \strokec10 getLatestResult\cf2 \strokec2 ()\cb1 \
+\
+\cb3     \cf4 \strokec4 # Check if the latest result has any targets.\cf2 \cb1 \strokec2 \
+\cb3     \cf9 \strokec9 hasTargets\cf2 \strokec2  \cf6 \strokec6 =\cf2 \strokec2  \cf9 \strokec9 result\cf2 \strokec2 .\cf10 \strokec10 hasTargets\cf2 \strokec2 ()\cb1 \
+\
+\cb3     \cf4 \strokec4 # Get a list of currently tracked targets.\cf2 \cb1 \strokec2 \
+\cb3     \cf9 \strokec9 targets\cf2 \strokec2  \cf6 \strokec6 =\cf2 \strokec2  \cf9 \strokec9 result\cf2 \strokec2 .\cf10 \strokec10 getTargets\cf2 \strokec2 ()\cb1 \
+\
+\cb3     \cf4 \strokec4 # Get the best target\cf2 \cb1 \strokec2 \
+\cb3     \cf9 \strokec9 bestTarget\cf2 \strokec2  \cf6 \strokec6 =\cf2 \strokec2  \cf9 \strokec9 result\cf2 \strokec2 .\cf10 \strokec10 getBestTarget\cf2 \strokec2 () \cf4 \strokec4 #coming soon?\cf2 \cb1 \strokec2 \
+\
+\cb3     \cf4 \strokec4 # Get information from target.\cf2 \cb1 \strokec2 \
+\cb3     \cf9 \strokec9 yaw\cf2 \strokec2  \cf6 \strokec6 =\cf2 \strokec2  target.getYaw()   \cf4 \strokec4 #The yaw of the target in degrees (positive left).\cf2 \cb1 \strokec2 \
+\cb3     \cf9 \strokec9 pitch\cf2 \strokec2  \cf6 \strokec6 =\cf2 \strokec2  target.getPitch()   \cf4 \strokec4 #The pitch of the target in degrees (positive up).\cf2 \cb1 \strokec2 \
+\cb3     \cf9 \strokec9 area\cf2 \strokec2  \cf6 \strokec6 =\cf2 \strokec2  target.getArea()   \cf4 \strokec4 #The area (how much of the camera feed the bounding box takes up) as a percent (0-100).\cf2 \cb1 \strokec2 \
+\cb3     \cf9 \strokec9 skew\cf2 \strokec2  \cf6 \strokec6 =\cf2 \strokec2  target.getSkew()   \cf4 \strokec4 #The skew of the target in degrees (counter-clockwise positive).\cf2 \cb1 \strokec2 \
+\cb3     \cf9 \strokec9 pose\cf2 \strokec2  \cf6 \strokec6 =\cf2 \strokec2  target.getCameraToTarget()   \cf4 \strokec4 #The 4 corners of the minimum bounding box rectangle.\cf2 \cb1 \strokec2 \
+\cb3     \cf9 \strokec9 corners\cf2 \strokec2  \cf6 \strokec6 =\cf2 \strokec2  target.getDetectedCorners()   \cf4 \strokec4 #The camera to target transform.\cf2 \cb1 \strokec2 \
+\
+\cb3     \cf4 \strokec4 # Get information from target.\cf2 \cb1 \strokec2 \
+\cb3     \cf9 \strokec9 targetID\cf2 \strokec2  \cf6 \strokec6 =\cf2 \strokec2  target.getFiducialId()   \cf4 \strokec4 #The ID of the detected fiducial marker.\cf2 \cb1 \strokec2 \
+\cb3     \cf9 \strokec9 poseAmbiguity\cf2 \strokec2  \cf6 \strokec6 =\cf2 \strokec2  target.getPoseAmbiguity()   \cf4 \strokec4 #How ambiguous the pose of the target is (see below).\cf2 \cb1 \strokec2 \
+\cb3     \cf9 \strokec9 bestCameraToTarget\cf2 \strokec2  \cf6 \strokec6 =\cf2 \strokec2  target.getBestCameraToTarget()   \cf4 \strokec4 #Get the transform that maps camera space \cf2 \cb1 \strokec2 \
+\cb3         \cf4 \strokec4 #(X = forward, Y = left, Z = up) to object/fiducial tag space (X forward, Y left, Z up) with \cf2 \cb1 \strokec2 \
+\cb3         \cf4 \strokec4 # the lowest reprojection error.\cf2 \cb1 \strokec2 \
+\cb3     \cf9 \strokec9 alternateCameraToTarget\cf2 \strokec2  \cf6 \strokec6 =\cf2 \strokec2  target.getAlternateCameraToTarget()   \cf4 \strokec4 #Get the transform that maps camera space \cf2 \cb1 \strokec2 \
+\cb3         \cf4 \strokec4 #(X = forward, Y = left, Z = up) to object/fiducial tag space (X forward, Y left, Z up) with \cf2 \cb1 \strokec2 \
+\cb3         \cf4 \strokec4 # the highest reprojection error.\cf2 \cb1 \strokec2 \
+\
+\cb3     \cf8 \strokec8 """\cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb3 \strokec8     A PhotonCamera can save still images from the input or output video streams to file. \cf2 \cb1 \strokec2 \
+\cf8 \cb3 \strokec8     This is useful for debugging what a camera is seeing while on the field and confirming \cf2 \cb1 \strokec2 \
+\cf8 \cb3 \strokec8     targets are being identified properly.\cf2 \cb1 \strokec2 \
+\cf8 \cb3 \strokec8     Images are stored within the PhotonVision configuration directory. Running the \'93Export\'94 \cf2 \cb1 \strokec2 \
+\cf8 \cb3 \strokec8     operation in the settings tab will download a .zip file which contains the image captures.\cf2 \cb1 \strokec2 \
+\cf8 \cb3 \strokec8     \cf2 \cb1 \strokec2 \
+\cf8 \cb3 \strokec8     # Capture pre-process camera stream image\cf2 \cb1 \strokec2 \
+\cf8 \cb3 \strokec8     camera.takeInputSnapshot()\cf2 \cb1 \strokec2 \
+\
+\cf8 \cb3 \strokec8     # Capture post-process camera stream image\cf2 \cb1 \strokec2 \
+\cf8 \cb3 \strokec8     camera.takeOutputSnapshot()\cf2 \cb1 \strokec2 \
+\cf8 \cb3 \strokec8     """\cf2 \cb1 \strokec2 \
+}

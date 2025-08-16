@@ -1,0 +1,325 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red57\green192\blue38;}
+{\*\expandedcolortbl;;\csgray\c0;\cssrgb\c25706\c77963\c19557;}
+\margl1440\margr1440\vieww17540\viewh22220\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 warres1@MacBook-Pro test_talonsrx_vision % python3 -m robotpy deploy --nc\
+08:27:12:812 INFO    : faulthandler        : registered SIGUSR2 for PID 413\
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/phoenix6/phoenix_native.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.\
+  import os, pkg_resources\
+08:27:12:868 INFO    : deploy              : Running tests: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -m robotpy --main /Users/warres1/data/FRC/FRC2025/test_talonsrx_vision/robot.py test\
+[phoenix] CANbus Connected: sim\
+[phoenix] CANbus Network Up: sim\
+08:27:13:007 INFO    : faulthandler        : registered SIGUSR2 for PID 415\
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/phoenix6/phoenix_native.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.\
+  import os, pkg_resources\
+08:27:13:061 INFO    : test                : Isolated test mode not enabled, consider using it if your tests hang\
+08:27:13:061 INFO    : test                : - See 'robotpy test --help' for details\
+08:27:13:061 WARNING : pyfrc.physics       : Cannot enable physics support, /Users/warres1/data/FRC/FRC2025/test_talonsrx_vision/physics.py not found\
+[phoenix] CANbus Connected: sim\
+[phoenix] CANbus Network Up: sim\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1\b ============================= test session starts ==============================
+\f0\b0 \
+platform darwin -- Python 3.13.3, pytest-8.3.5, pluggy-1.6.0\
+rootdir: /Users/warres1/data/FRC/FRC2025/test_talonsrx_vision\
+configfile: pyproject.toml\
+plugins: reraise-2.1.2, typeguard-4.3.0\
+
+\f1\b collected 4 items                                                              
+\f0\b0 \
+\
+tests/pyfrc_test.py \cf3 ....                                                 [100%]\cf2 \
+\
+\cf3 ============================== 
+\f1\b 4 passed
+\f0\b0  in 0.36s ===============================\cf2 \
+[phoenix-diagnostics] Server shutdown cleanly. (dur:0)\
+	\
+[phoenix] Library shutdown cleanly\
+	\
+08:27:13:486 INFO    : deploy              : Robot project requirements:\
+08:27:13:486 INFO    : deploy              : - robotpy==2025.3.2.2\
+08:27:13:486 INFO    : deploy              : - photonlibpy\
+08:27:13:505 INFO    : robotpy.installer   : Settings loaded from /Users/warres1/data/FRC/FRC2025/test_talonsrx_vision/.wpilib/wpilib_preferences.json\
+08:27:13:505 INFO    : robotpy.installer   : Finding robot for team 1212\
+08:27:13:510 INFO    : robotpy.installer   : -> Robot is at 10.12.12.2\
+08:27:13:510 INFO    : robotpy.installer   : Connecting to robot via SSH at 10.12.12.2\
+08:27:13:711 INFO    : paramiko.transport  : Connected (version 2.0, client OpenSSH_8.3)\
+08:27:13:868 INFO    : paramiko.transport  : Auth banner: b'NI Linux Real-Time (run mode)\\n\\nLog in with your NI-Auth credentials.\\n\\n'\
+08:27:13:868 INFO    : paramiko.transport  : Authentication (password) successful!\
+08:27:13:869 INFO    : robotpy.installer   : RobotPy Installer 2025.1.1\
+08:27:13:869 INFO    : robotpy.installer   : -> caching files at /Users/warres1/wpilib/2025/robotpy\
+08:27:13:929 INFO    : robotpy.installer   : Clearing FRC C++/Java user programs if present\
+08:27:16:164 INFO    : deploy              : All project requirements already installed\
+08:27:16:164 INFO    : deploy              : Killing robot program\
+[phoenix] Library initialization is complete.\
+	\
+08:27:18:677 INFO    : deploy              : Copying new files to RoboRIO\
+08:27:18:705 INFO    : root                : Not including git hash in deploy.json: Not a git repo.\
+[phoenix-diagnostics] Server 2025.4.0 (Apr 30 2025, 17:59:17) running on port: 1250\
+	\
+08:27:18:779 INFO    : paramiko.transport.sftp: [chan 9] Opened sftp connection (server version 3)\
+make /home/lvuser/py_new\
+photon_example_poseest_robot_py.rtf -> /home/lvuser/py_new/photon_example_poseest_robot_py.rtf\
+requirements.txt -> /home/lvuser/py_new/requirements.txt\
+deploy.json -> /home/lvuser/py_new/deploy.json\
+pyproject.toml -> /home/lvuser/py_new/pyproject.toml\
+constants.py -> /home/lvuser/py_new/constants.py\
+photon_example_aimandrange_robot_py.rtf -> /home/lvuser/py_new/photon_example_aimandrange_robot_py.rtf\
+robotcontainer.py -> /home/lvuser/py_new/robotcontainer.py\
+robot.py -> /home/lvuser/py_new/robot.py\
+photonvision_python_code_statements.rtf -> /home/lvuser/py_new/photonvision_python_code_statements.rtf\
+photon_example_aimattarget_robot_py.rtf -> /home/lvuser/py_new/photon_example_aimattarget_robot_py.rtf\
+driver_station_log.rtf -> /home/lvuser/py_new/driver_station_log.rtf\
+make /home/lvuser/py_new/tests\
+tests/pyfrc_test.py -> /home/lvuser/py_new/tests/pyfrc_test.py\
+make /home/lvuser/py_new/subsystems\
+subsystems/vision_subsystem.py -> /home/lvuser/py_new/subsystems/vision_subsystem.py\
+subsystems/drive_subsystem.py -> /home/lvuser/py_new/subsystems/drive_subsystem.py\
+make /home/lvuser/py_new/commands\
+commands/drive_straight_command.py -> /home/lvuser/py_new/commands/drive_straight_command.py\
+commands/Autos.py -> /home/lvuser/py_new/commands/Autos.py\
+commands/aimAtAprilTag.py -> /home/lvuser/py_new/commands/aimAtAprilTag.py\
+commands/autonomous_command.py -> /home/lvuser/py_new/commands/autonomous_command.py\
+commands/default_drive_command.py -> /home/lvuser/py_new/commands/default_drive_command.py\
+08:27:19:368 INFO    : paramiko.transport.sftp: [chan 9] sftp session closed.\
+Connecting to 10.12.12.2:1741...OK\
+08:27:19:380 INFO    : deploy              : Netconsole is listening...\
+08:27:19:380 INFO    : deploy              : Starting robot code\
+[0.00] Sat Aug 16 08:27:20 PDT 2025 - Killing robot code in frcKillRobot.sh\
+Sat Aug 16 08:27:20 PDT 2025 - Killing robot code in frcKillRobot.sh\
+[2.92] Killing previously running FRC program...\
+[3.43] FRC pid 3065 did not die within 500 ms. Force killing with kill -9\
+[5.14] 08:27:25:426 INFO    : faulthandler        : registered SIGUSR2 for PID 3231\
+[8.57] /usr/local/lib/python3.13/site-packages/phoenix6/phoenix_native.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.\
+[8.57]   import os, pkg_resources\
+[14.44] 08:27:34:725 INFO    : deploy-info         : warres1@MacBook-Pro.local at 2025-08-16T08:27:18\
+[14.44] 08:27:34:726 INFO    : wpilib              : RobotPy version 2025.3.2.2\
+[14.44] 08:27:34:727 INFO    : wpilib              : WPILib version 2025.3.2.2\
+[14.46] 08:27:34:754 INFO    : nt                  : Listening on NT3 port 1735, NT4 port 5810\
+[14.48] Camera Server Library Not Found\
+[14.49] 08:27:34:778 INFO    : PhotonVision-TimeSyncServer: Server Started\
+[14.49] made it to drive_subsystem arcadeDrive with parameters speed: <function RobotContainer.configureButtonBindings.<locals>.<lambda> at 0xb1180de8> and rotation <function RobotContainer.configureButtonBindings.<locals>.<lambda> at 0xb1180e38>\
+[14.50] \
+[14.50] ********** Robot program startup complete **********\
+[14.50] Default RobotPeriodic() method... Override me!\
+[14.51] 08:27:34:803 WARNING : your.robot          : Could not find any PhotonVision coprocessors on NetworkTables. Double check that PhotonVision is running, and that your camera is connected!\
+[14.74] 08:27:35:030 INFO    : nt                  : Got a NT4 connection from 10.12.12.54 port 46062\
+[14.74] 08:27:35:031 INFO    : nt                  : CONNECTED NT4 client 'photonvision@1' (from 10.12.12.54:46062)\
+[14.81] 08:27:35:101 INFO    : nt                  : Got a NT4 connection from 10.12.12.212 port 56246\
+[14.82] 08:27:35:111 INFO    : nt                  : CONNECTED NT4 client 'shuffleboard@2' (from 10.12.12.212:56246)\
+[14.88] 1 Could not find any PhotonVision coprocessors on NetworkTables. Double check that PhotonVision is running, and that your camera is connected! <frozen runpy>:198 \
+[14.88] Warning at <frozen runpy>:198: Could not find any PhotonVision coprocessors on NetworkTables. Double check that PhotonVision is running, and that your camera is connected!\
+[14.88] \
+[16.78] 0 [phoenix] Library initialization is complete.  \
+[18.29] 08:27:38:581 INFO    : nt                  : Got a NT4 connection from 10.12.12.165 port 58783\
+[18.30] 08:27:38:582 INFO    : nt                  : CONNECTED NT4 client 'glass@3' (from 10.12.12.165:58783)\
+[18.83] 0 [phoenix-diagnostics] Server 2025.4.0 (Apr 30 2025, 18:02:20) running on port: 1250  \
+[28.51] Initialize method\
+[28.51] Target Yaw is: -12.993983908398349\
+[28.52] Turn output is: 0.6496991954199175\
+[28.52] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6496991954199175\
+[28.52] AimatAprilTag isFinished method\
+[28.53] Target Yaw is: -12.993983908398349\
+[28.53] Turn output is: 0.6496991954199175\
+[28.53] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6496991954199175\
+[28.53] AimatAprilTag isFinished method\
+[28.55] Target Yaw is: -12.993983908398349\
+[28.55] Turn output is: 0.6496991954199175\
+[28.56] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6496991954199175\
+[28.56] AimatAprilTag isFinished method\
+[28.57] Target Yaw is: -12.993983908398349\
+[28.57] Turn output is: 0.6496991954199175\
+[28.57] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6496991954199175\
+[28.57] AimatAprilTag isFinished method\
+[28.59] Target Yaw is: -12.993983908398349\
+[28.59] Turn output is: 0.6496991954199175\
+[28.60] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6496991954199175\
+[28.60] AimatAprilTag isFinished method\
+[28.61] Target Yaw is: -12.979581570867245\
+[28.62] Turn output is: 0.6489790785433622\
+[28.62] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6489790785433622\
+[28.62] AimatAprilTag isFinished method\
+[28.63] Target Yaw is: -12.979581570867245\
+[28.64] Turn output is: 0.6489790785433622\
+[28.64] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6489790785433622\
+[28.64] AimatAprilTag isFinished method\
+[28.64] -6 A timeout has been exceeded: DifferentialDrive... Output not updated often enough. See https://docs.wpilib.org/motorsafety for more information. Check 	at <no python frames>\
+	at  + 0x337a0 [0xb4c1c7a0]\
+\
+[28.64] Error at Check: A timeout has been exceeded: DifferentialDrive... Output not updated often enough. See https://docs.wpilib.org/motorsafety for more information.\
+[28.64] 	at <no python frames>\
+[28.64] 	at  + 0x337a0 [0xb4c1c7a0]\
+[28.64] \
+[28.64] \
+[28.66] Target Yaw is: -12.979581570867245\
+[28.66] Turn output is: 0.6489790785433622\
+[28.66] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6489790785433622\
+[28.66] AimatAprilTag isFinished method\
+[28.67] Target Yaw is: -12.979581570867245\
+[28.68] Turn output is: 0.6489790785433622\
+[28.68] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6489790785433622\
+[28.68] AimatAprilTag isFinished method\
+[28.70] Target Yaw is: -12.979581570867245\
+[28.70] Turn output is: 0.6489790785433622\
+[28.70] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6489790785433622\
+[28.70] AimatAprilTag isFinished method\
+[28.72] Target Yaw is: -12.979581570867245\
+[28.72] Turn output is: 0.6489790785433622\
+[28.72] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6489790785433622\
+[28.72] AimatAprilTag isFinished method\
+[28.74] Target Yaw is: -12.979581570867245\
+[28.74] Turn output is: 0.6489790785433622\
+[28.74] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6489790785433622\
+[28.74] AimatAprilTag isFinished method\
+[28.76] Target Yaw is: -12.9885278923609\
+[28.76] Turn output is: 0.649426394618045\
+[28.76] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.649426394618045\
+[28.76] AimatAprilTag isFinished method\
+[28.78] Target Yaw is: -12.9885278923609\
+[28.78] Turn output is: 0.649426394618045\
+[28.78] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.649426394618045\
+[28.78] AimatAprilTag isFinished method\
+[28.80] Target Yaw is: -12.9885278923609\
+[28.80] Turn output is: 0.649426394618045\
+[28.80] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.649426394618045\
+[28.80] AimatAprilTag isFinished method\
+[28.82] Target Yaw is: -12.9885278923609\
+[28.82] Turn output is: 0.649426394618045\
+[28.82] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.649426394618045\
+[28.82] AimatAprilTag isFinished method\
+[28.84] Target Yaw is: -12.9885278923609\
+[28.84] Turn output is: 0.649426394618045\
+[28.84] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.649426394618045\
+[28.84] AimatAprilTag isFinished method\
+[28.86] Target Yaw is: -12.9885278923609\
+[28.86] Turn output is: 0.649426394618045\
+[28.86] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.649426394618045\
+[28.86] AimatAprilTag isFinished method\
+[28.88] Target Yaw is: -12.98398610015687\
+[28.88] Turn output is: 0.6491993050078435\
+[28.88] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6491993050078435\
+[28.88] AimatAprilTag isFinished method\
+[28.90] Target Yaw is: -12.98398610015687\
+[28.91] Turn output is: 0.6491993050078435\
+[28.91] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6491993050078435\
+[28.91] AimatAprilTag isFinished method\
+[28.92] Target Yaw is: -12.98398610015687\
+[28.92] Turn output is: 0.6491993050078435\
+[28.93] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6491993050078435\
+[28.93] AimatAprilTag isFinished method\
+[28.94] Target Yaw is: -12.98398610015687\
+[28.94] Turn output is: 0.6491993050078435\
+[28.94] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6491993050078435\
+[28.94] AimatAprilTag isFinished method\
+[28.96] AimatAprilTag end method\
+[35.21] Initialize method\
+[35.21] Target Yaw is: -12.987944713029062\
+[35.22] Turn output is: 0.6493972356514531\
+[35.22] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6493972356514531\
+[35.22] AimatAprilTag isFinished method\
+[35.23] Target Yaw is: -12.987944713029062\
+[35.23] Turn output is: 0.6493972356514531\
+[35.23] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6493972356514531\
+[35.23] AimatAprilTag isFinished method\
+[35.25] Target Yaw is: -12.987944713029062\
+[35.25] Turn output is: 0.6493972356514531\
+[35.25] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6493972356514531\
+[35.26] AimatAprilTag isFinished method\
+[35.27] Target Yaw is: -12.987944713029062\
+[35.27] Turn output is: 0.6493972356514531\
+[35.27] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6493972356514531\
+[35.28] AimatAprilTag isFinished method\
+[35.29] Target Yaw is: -12.984425615515484\
+[35.30] Turn output is: 0.6492212807757742\
+[35.30] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6492212807757742\
+[35.30] AimatAprilTag isFinished method\
+[35.30] -6 A timeout has been exceeded: DifferentialDrive... Output not updated often enough. See https://docs.wpilib.org/motorsafety for more information. Check 	at <no python frames>\
+	at  + 0x337a0 [0xb4c1c7a0]\
+\
+[35.30] Error at Check: A timeout has been exceeded: DifferentialDrive... Output not updated often enough. See https://docs.wpilib.org/motorsafety for more information.\
+[35.30] 	at <no python frames>\
+[35.30] 	at  + 0x337a0 [0xb4c1c7a0]\
+[35.30] \
+[35.30] \
+[35.32] Target Yaw is: -12.984425615515484\
+[35.32] Turn output is: 0.6492212807757742\
+[35.32] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6492212807757742\
+[35.32] AimatAprilTag isFinished method\
+[35.34] Target Yaw is: -12.984425615515484\
+[35.34] Turn output is: 0.6492212807757742\
+[35.34] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6492212807757742\
+[35.34] AimatAprilTag isFinished method\
+[35.36] Target Yaw is: -12.984425615515484\
+[35.36] Turn output is: 0.6492212807757742\
+[35.36] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6492212807757742\
+[35.36] AimatAprilTag isFinished method\
+[35.38] Target Yaw is: -12.984425615515484\
+[35.38] Turn output is: 0.6492212807757742\
+[35.38] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6492212807757742\
+[35.38] AimatAprilTag isFinished method\
+[35.40] Target Yaw is: -12.984425615515484\
+[35.40] Turn output is: 0.6492212807757742\
+[35.40] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6492212807757742\
+[35.40] AimatAprilTag isFinished method\
+[35.42] Target Yaw is: -12.988891243804241\
+[35.42] Turn output is: 0.6494445621902121\
+[35.43] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6494445621902121\
+[35.43] AimatAprilTag isFinished method\
+[35.44] Target Yaw is: -12.988891243804241\
+[35.44] Turn output is: 0.6494445621902121\
+[35.45] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6494445621902121\
+[35.45] AimatAprilTag isFinished method\
+[35.47] Target Yaw is: -12.988891243804241\
+[35.47] Turn output is: 0.6494445621902121\
+[35.47] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6494445621902121\
+[35.47] AimatAprilTag isFinished method\
+[35.48] Target Yaw is: -12.988891243804241\
+[35.48] Turn output is: 0.6494445621902121\
+[35.49] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6494445621902121\
+[35.49] AimatAprilTag isFinished method\
+[35.50] Target Yaw is: -12.988891243804241\
+[35.50] Turn output is: 0.6494445621902121\
+[35.51] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6494445621902121\
+[35.51] AimatAprilTag isFinished method\
+[35.52] Target Yaw is: -12.988891243804241\
+[35.52] Turn output is: 0.6494445621902121\
+[35.53] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6494445621902121\
+[35.53] AimatAprilTag isFinished method\
+[35.55] Target Yaw is: -12.988891243804241\
+[35.55] Turn output is: 0.6494445621902121\
+[35.55] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6494445621902121\
+[35.55] AimatAprilTag isFinished method\
+[35.57] Target Yaw is: -12.984051549590463\
+[35.57] Turn output is: 0.6492025774795231\
+[35.57] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6492025774795231\
+[35.57] AimatAprilTag isFinished method\
+[35.59] Target Yaw is: -12.984051549590463\
+[35.59] Turn output is: 0.6492025774795231\
+[35.59] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6492025774795231\
+[35.59] AimatAprilTag isFinished method\
+[35.61] Target Yaw is: -12.984051549590463\
+[35.61] Turn output is: 0.6492025774795231\
+[35.61] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6492025774795231\
+[35.61] AimatAprilTag isFinished method\
+[35.63] Target Yaw is: -12.984051549590463\
+[35.63] Turn output is: 0.6492025774795231\
+[35.63] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6492025774795231\
+[35.63] AimatAprilTag isFinished method\
+[35.65] Target Yaw is: -12.984051549590463\
+[35.65] Turn output is: 0.6492025774795231\
+[35.65] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6492025774795231\
+[35.65] AimatAprilTag isFinished method\
+[35.67] Target Yaw is: -12.984051549590463\
+[35.67] Turn output is: 0.6492025774795231\
+[35.67] made it to drive_subsystem arcadeDrive with parameters speed: 0.0 and rotation 0.6492025774795231\
+[35.67] AimatAprilTag isFinished method\
+[35.69] AimatAprilTag end method\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+{{\NeXTGraphic Screenshot 2025-08-16 at 8.30.04â€¯AM.png \width18200 \height16160 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}}
