@@ -39,7 +39,8 @@ class AimAtAprilTag(commands2.Command):
             xSpeed = 0.0  # no forward movement
             print(f"Turn output is: {turn_output}")
             wpilib.SmartDashboard.putNumber("Turn Output", turn_output)
-            self.drive.arcadeDrive(self.drive, xSpeed, turn_output)  # Only turn, no forward movement
+            self.drive.turn(turn_output)
+            #self.drive.arcadeDrive(self.drive, xSpeed, turn_output)  # Only turn, no forward movement
         else:
             print("AimatAprilTag stop motor")
             self.drive.stop() # Stop if no target found
