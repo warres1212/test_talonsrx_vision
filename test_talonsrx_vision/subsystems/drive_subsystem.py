@@ -44,6 +44,14 @@ class DriveSubsystem(commands2.Subsystem):
         return commands2.cmd.run(
             lambda: self.drive.arcadeDrive(xSpeed(), zRotation()), drive_subsystem,)
 
+    def turn(self, turn_speed):
+        turn_output = self.clamp(turn_speed, -0.5, 0.5)  # Clamps the controller output to between -0.5 and 0.5
+        self.drive.arcadeDrive(0.0, turn_output)
+
+    def clamp(self, v, minval, maxval):
+        # Python doesn't have a builtin clamp function
+        return max(min(v, maxval), minval)
+
     def stop(self):
         """
         Stops the drivetrain motors.
